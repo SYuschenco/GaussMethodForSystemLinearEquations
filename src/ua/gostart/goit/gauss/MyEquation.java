@@ -1,23 +1,35 @@
 package ua.gostart.goit.gauss;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Random;
+import java.util.*;
 
 public class MyEquation implements Gauss<Float, MyEquation> {
+
     private List<Float> equation = new ArrayList<Float>();
+
     public List<Float> getEquation(){
         return equation;
     }
-    public void generate(int size){
+
+    public void generate(int size, String methodForGeneratingSystemCoefficients){
         if (size < 2) size = 2;
         this.equation.clear();
-        for (int i = 0; i < size; i++){
+        if (methodForGeneratingSystemCoefficients.equals("Random")) {
+            for (int i = 0; i < size; i++){
             Random random = new Random();
             this.equation.add((float) (random.nextInt()%10) + 1);
         }
+
+        } else{
+            System.out.println("\nSystem of linear equations size is " + (size-1) +
+                    " input in console matrixs coefficients (one line for one coefficient )");
+            for (int i = 0; i < size; i++){
+                Scanner scanner = new Scanner(System.in);
+                String value = scanner.nextLine();
+                this.equation.add(Float.parseFloat(value));
+            }
+        }
     }
+
     @Override
     public int size(){
         return equation.size();
