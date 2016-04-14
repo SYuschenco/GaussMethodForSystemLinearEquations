@@ -13,8 +13,8 @@ public class Main {
 
     static int DEFAULT_EQUATIONS_NUMBER = 3;
     static int DEFAULT_VARIABLES_NUMBER = DEFAULT_EQUATIONS_NUMBER;
-    static String methodForGeneratingSystemCoefficients = "Input";
-    //static String methodForGeneratingSystemCoefficients = "Random";
+    //static String methodForGeneratingSystemCoefficients = "Input";
+    static String methodForGeneratingSystemCoefficients = "Random";
     static LinearSystem<Float, MyEquation> list;
 
     public static void main(String args[]) {
@@ -74,36 +74,6 @@ public class Main {
             System.out.println(s);
         }
         System.out.println("");
-    }
-
-    public static void printSystemInScene(LinearSystem<Float, MyEquation> system) {
-        Stage primaryStage = new Stage();
-        GridPane grid = new GridPane();
-        Scene scene = new Scene(grid, 1300, 975);
-        final Text actiontarget = new Text();
-        grid.add(actiontarget, 1, 6);
-        grid.setAlignment(Pos.TOP_CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-        Text scenetitle2 = new Text("");
-        scenetitle2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle2, 0, 5, 2, 1);
-        primaryStage.setScene(scene);
-        for (int i = 0; i < system.size(); i++) {
-            MyEquation temp = system.get(i);
-            //scenetitle2.setText(String.valueOf(system.itemAt(i));
-            for (int j = 0; j < temp.size(); j++) {
-
-                scenetitle2.setText(String.valueOf(system.itemAt(i, j)));
-
-                //+= String.format("%f; %s", system.itemAt(i, j), "\t");
-            }
-            System.out.println(scenetitle2);
-        }
-        System.out.println("");
-        grid.add(scenetitle2, 0, 10, 2, 1);
-        primaryStage.setScene(scene);
     }
 
     public static void printVector(Float[] x) {
