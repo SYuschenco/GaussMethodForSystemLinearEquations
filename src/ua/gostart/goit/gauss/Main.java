@@ -45,11 +45,11 @@ public class Main {
         printVector(x);
     }
 
-    public static LinearSystem<Float, MyEquation> generateSystem(String DEFAULT_GENERETED_SYSTEM) {
+    public static LinearSystem<Float, MyEquation> generateSystem(String methodForGeneratingSystemCoefficients) {
         LinearSystem<Float, MyEquation> list = new LinearSystem<Float, MyEquation>();
         for (int i = 0; i < DEFAULT_EQUATIONS_NUMBER; i++) {
             MyEquation eq = new MyEquation();
-            eq.generate(DEFAULT_VARIABLES_NUMBER + 1, DEFAULT_GENERETED_SYSTEM);
+            eq.generate(DEFAULT_VARIABLES_NUMBER + 1, methodForGeneratingSystemCoefficients);
             list.push(eq);
         }
         return list;
